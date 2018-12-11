@@ -1,0 +1,35 @@
+\section{Fehlerrechnung}
+\label{sec:Fehlerrechnung}
+Wenn fehlerhafte Größen in Rechnungen verwendet werden, so muss der neue Fehler mittels der Gaußschen Fehlerfortpflanzung berechnet werden. Der neue Fehler ist dann
+\begin{equation}
+\label{eqn:fehlerfortpflanzung}
+\Delta f = \sqrt{\sum_{i=0}^N \Bigl( \frac{\partial f}{\partial x_i} \Bigr) ^2 \cdot (\Delta x_i)^2 },
+\end{equation}
+wobei $f$ die zu errechnende Größe bezeichnte und die $x_i$ die fehlerbehaften Größen, von denen $f$ abhängt.
+Wenn Mittelwerte zu bestimmen sind, errechnen sich diese durch
+\begin{equation}
+\label{eqn:mittelwert}
+\overline{x} = \frac {1} {N} \sum_{i=1}^N x_i.
+\end{equation}
+Der zum Mittelwert gehörige Fehler ist
+\begin{equation}
+\label{eqn:FehlerMittelwert}
+\Delta \overline{x} = \frac{1}{\sqrt{N \cdot (N-1)}} \sqrt{ \sum_{i=1}^N (x_i - \overline{x})^2}.
+\end{equation}
+
+Lineare Ausgleichsgeraden berechnen sich über
+\begin{equation}
+\label{eqn:Gerade}
+y = a \cdot x + b.
+\end{equation}
+Die dazugehörigen Parameter $a$ und $b$ sind mittels
+\begin{equation}
+\label{eqn:a}
+a = \frac {\sum_{i=1}^N (x_i - \overline{x}) (y_i - \overline{y})}{\sum_{i=1}^N (x_i - \overline{x})^2}
+\end{equation}
+und
+\begin{equation}
+\label{eqn:b}
+b = \overline{y} - a \cdot \overline{x}
+\end{equation}
+zu berechnen.
