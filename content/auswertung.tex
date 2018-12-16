@@ -1,3 +1,146 @@
 \section{Auswertung}
 \label{sec:Auswertung}
 
+%\begin{figure}
+%  \centering
+%  \includegraphics{plot.pdf}
+%  \caption{Plot.}
+%  \label{fig:plot}
+%\end{figure}
+
+  Die geometrischen Angaben zum Helmholtzspulenpaar sind der Anleitung \cite[2]{V105} entnommen und stimmen mit den am Gerät  
+  abzulesenden Daten überein. Die Daten sind in \autoref{tab:spule} zu sehen.
+  \begin{table}[!htp]
+    \centering
+    \caption{Physikalische Angaben zum Helmholtzspulenpaar.}
+    \label{tab:spule}
+    \begin{tabular}{c c c}
+    \toprule
+    {Radius der Spulen $R_\text{Spule}$ / m} & {Abstand der beiden Spulen voneinander $d$ / m} & {Anzahl Windungen $N$} \\
+    \midrule
+    0.109 & 0.138 & 195 \\
+    \bottomrule
+    \end{tabular}
+  \end{table}
+
+  Die gemessenen, geometrischen Daten der zu untersuchenden Kugel sind in \autoref{tab:kugel} zu sehen.
+  \begin{table}[!htp]
+    \centering
+    \caption{Geometrische Daten der Kugel.}
+    \label{tab:kugel}
+    \begin{tabular}{c c c}
+    \toprule
+    {Radius der Kugel $r_K$ / m} & {Masse der Kugel $m_K$ / kg} & {Länge des schwarzen Stiels an der Kugel  $r_\text{Stiel}$ / m}\\
+    \midrule
+    0.02615 & 0.14197 & 0.01225 \\
+    \bottomrule
+    \end{tabular}
+  \end{table}
+  
+  Das Trägheitsmoment der Kugel ist dann somit 
+  \\ \\
+  \centerline{$J_K = \frac{2}{5} m_K r_K^{2} = 3.88 \cdot 10^{-5} \symup{kg m^2}$.}
+  \\ \\
+
+\subsection{Bestimmung des magnetischen Moments mittels Gravitation}
+  Die für diesen Versuchsteil benötigte Masse $m_M$, welche in verschieden Abständen zum Stiel der Kugel gemessen wird, hat ein Gewicht von
+  $m_M = 1.63 \symup{g}$. 
+  Der zur Bestimmung des magnetischen Moments gemessener Zusammenhang zwischen Abstand der Masse $m_M$ und der für das Magnetfeld
+  aufgewandte Stromstärke $I$ ist in \autoref{tab:gravi} zu sehen.
+  \input{../content/gravi.tex}
+  Aus den Stromstärken $I$ lassen sich dann mittels Gleichung \eqref{eqn:helmholtz} und den Werten aus \autoref{tab:spule}
+   die aufgebrachten Magnetfelstärken errechnen. Die Abstände sind als 
+  Abstände zwischen der Masse $M_m$ und dem Zentrum der Kugel zu betrachten, weshalb zu den Abständen aus \autoref{tab:gravi} 
+  noch der Radius der Kugel $r_K$ und die Länge des Stieles der Kugel $r_\text{Stiel}$ aus \autoref{tab:kugel} addiert werden müssen.
+  Dieser Abstand $r$ wird gegen die magnetische Flussdichte $B$ aufgetragen und anschließend eine lineare Regression der Form 
+  \begin{equation}
+  \label{eqn:Gerade}
+    y = a \cdot x + b,
+  \end{equation}
+  wobei die Steigung a hier durch $a = \frac{B}{r}$ gegeben ist. Die aufgetragenen Werte und die zugehörige Ausgleichsgerade
+  sind in \autoref{fig:gravigraph} zu sehen.
+  Die Steigung der Geraden beträgt
+  \\ \\
+  \centerline{$a = (31.258 \pm 1.324) \symup{\frac{T}{m}}$}.
+  \\ \\ 
+  Mittels Gleichung \eqref{eqn:magn-grav} lässt sich das magnetische Dipolmoment dann zu
+  \\ \\ 
+  \centerline{$\mu_\text{Dipol} = (0.500 \pm 0.021) \symup{A m^2}$}
+  \\ \\
+  bestimmen, wobei sich der Fehler durch Gaußsche Fehlerfortpflanzung errechnet zu 
+  \\ \\
+  \centerline{$\Delta \mu_\text{Dipol} = \sqrt{m^2 \cdot g^2 \cdot \Delta a^2}$}.
+  \\ \\
+
+\input{../content/gravi2.tex}
+\begin{figure}
+  \centering
+  \includegraphics{gravitation.pdf}
+  \caption{Auftragung des Abstandes $r$ zwischen Kugelzentrum und augesteckter Masse und magnetischer Flussdichte $B$ mit Ausgleichgerade.}
+  \label{fig:gravigraph}
+\end{figure}
+
+\subsection{Bestimmung des magnetischen Moments über die Schwinungsdauer eines Magneten}
+    Die für diesen Auswertungsteil gemessenen Stromstärken $I$ und zehnfache Periodendauern $T$ sind in \autoref{tab:schwing} dargestellt.
+    \input{../content/schwing.tex}
+   
+    Die quadratischen Periodendauern $T^2$ werden gegen $\frac{1}{B}$ aufgetragen und anschließend mittels linearer Regression eine
+    Ausgleichsgerade bestimmt. 
+    Die verwendeten Werte sind in \autoref{tab:schwing2} zu sehen; die magnetischen Flussdichten werden wieder mittels Gleichung
+    \eqref{eqn:helmholtz} und mithilfe der Werte aus \autoref{tab:spule} bestimmt.
+    Die aufgetragenen Werte, sowie die zugehörige Ausgleichgerade finden sich in \autoref{fig:schwingung}.
+    Die Steigung der Ausgleichsgerade ist dabei 
+    \\ \\
+    \centerline{$a = T^2 B = (266.07 \pm 1.46) \symup{T s^2} $}.
+    \\ \\
+    Mittels Gleichung \eqref{eqn:magn-schwing} lässt sich damit das magnetische Moment errechnen zu
+    \\ \\
+    \centerline{$\mu_\text{Dipol} = (0.4079 \pm 0.0022) \symup{A m^2}$},
+    \\ \\
+    wobei sich der zugehörige Fehler über 
+    \\ \\
+    \centerline{$\Delta \mu_\text{Dipol} = \sqrt{\frac{(16 \pi^2 \cdot J_K)^2}{a^2} \Delta a^2 }  $}.
+    \\ \\
+    Das Trägheitsmoment der Kugel $J_K$ ist bereits zuvor bestimmt worden.
+    \input{../content/schwing2.tex}
+    \begin{figure}
+        \centering
+        \includegraphics{schwingung.pdf}
+        \caption{Auftragung der quadratischen Periodendauer $T^2$ und dem Kehrwert der magnetischen Flussdichte $\frac{1}{B}$ mit Ausgleichgerade.}
+        \label{fig:schwingung}
+    \end{figure}
+
+    \subsection{Bestimmun des magnetischen Momentes über die Präzession eines Magneten}
+        Die zur Bestimmung des magnetischen Momentes gemessenen Stromstärken und die dazugehörigen Umlaufzeiten sind in \autoref{tab:praezess}
+        dargestellt. Bei der Messung wird eine Rotationsfrequenz von $f = 4.9 \symup{Hz}$  verwendet, womit sich der Drehimpuls nach
+        Gleichung \eqref{eqn:drehimpuls} zu 
+        \\ \\
+        \centerline{$L_K = 0.0012 \symup{\frac{kg m}{s}}$}
+        \\ \\
+        errechnet. 
+        \input{../content/praezess.tex}
+        Die Kehrwerte der Periodendauern $\frac{1}{T}$ werden gegen die magnetischen Flussdichten $B$ aufgetragen.
+        Die magnetischen Flussdichten $B$ werden wieder durch Gleichung \eqref{eqn:helmholtz} und den Werten aus \autoref{tab:spule}
+        bestimmt. Die bei der Auftragung verwendeten Werte sind in \autoref{tab:praezess2} zu sehen. Über die gegeneinander 
+        aufgetragenen Werte wird eine lineare Regression zur Bestimmung einer Ausgleichsgerade durchgeführt. Die aufgetragenen Werte,
+        sowie die Ausgleichsgerade sind in \autoref{fig:praezess} dargestellt.
+        Die Steigung der Geraden ist 
+        \\ \\
+        \centerline{$a = T \cdot B = 0.0170 \pm 0.0009 \symup{T s}$}.
+        \\ \\
+        Zusammen mit den bestimmten Drehimpuls $L_K$ lässt sich das magnetische Moment durch Gleichung \eqref{eqn:magn-praez} zu
+        \\ \\
+        \centerline{$\mu_\text{Dipol} = (0.442 \pm 0.024) \symup{A m^2}$}
+        \\ \\
+        bestimmen.
+        Der Fehler des magnetischen Moments errechnet sich dabei zu 
+        \\ \\ 
+        \centerline{$\Delta\mu_\text{Dipol} = \sqrt{\frac{4 \pi^2 L^2}{a^2} \Delta a^2} $}.
+        \\ \\
+        \input{../content/praezess2.tex}
+          \begin{figure}
+        \centering
+        \includegraphics{praezess.pdf}
+        \caption{Auftragung des Kehrwertes der Periodendauer $\frac{1}{T}$ gegen die magnetische Flussdichte $B$ mit Ausgleichgerade.}
+        \label{fig:praezess}
+    \end{figure}

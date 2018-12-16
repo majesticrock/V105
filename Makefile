@@ -5,7 +5,7 @@ all: build/main.pdf
 #	TEXINPUTS=$$(pwd): python plot.py
 
 # hier weitere Abhängigkeiten für build/main.pdf deklarieren:
-build/main.pdf:
+
 
 build/main.pdf: FORCE | build
 	  TEXINPUTS=build: \
@@ -17,6 +17,13 @@ build/main.pdf: FORCE | build
 	  --interaction=nonstopmode \
 	  --halt-on-error \
 	main.tex
+build/gravitation.pdf: obligartorischepythonkacke.py matplotlibrc header-matplotlib.tex csv/gravi.csv | build
+	TEXINPUTS=$$(pwd): python obligartorischepythonkacke.py
+build/schwingung.pdf: schwingung.py matplotlibrc header-matplotlib.tex csv/schwing.csv | build
+	TEXINPUTS=$$(pwd): python schwingung.py
+build/praezess.pdf: praezession.py matplotlibrc header-matplotlib.tex csv/schwing.csv | build
+	TEXINPUTS=$$(pwd): python praezession.py
+build/main.pdf: content/gravi.tex content/gravi2.tex build/gravitation.pdf content/schwing.tex content/schwing2.tex build/schwingung.pdf content/praezess.tex content/praezess2.tex build/praezess.pdf
 
 build:
 	mkdir -p build
