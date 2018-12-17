@@ -65,7 +65,7 @@ np.savetxt("csv/schwing2.csv", df, delimiter=";")
 
 xdata = data1
 ydata = B1
-x_line = np.linspace(0, 6) 
+x_line = np.linspace(7 * 10**(-2), 5.517) 
 plt.plot(xdata, ydata, 'bx', label="Wertepaare")
 popt1, pcov1 = curve_fit(func, xdata, ydata)
 plt.plot(x_line, func(x_line, *popt1), "r-", label="Ausgleichsgerade")
