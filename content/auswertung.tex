@@ -16,7 +16,7 @@
     \label{tab:spule}
     \begin{tabular}{c c c}
     \toprule
-    {Radius der Spulen $R_\text{Spule}$ / m} & {Abstand der beiden Spulen voneinander $d$ / m} & {Anzahl Windungen $N$} \\
+    {Radius der Spulen $R_\text{Spule}$ / m} & {Abstand der beiden Spulen $d$ / m} & {Anzahl Windungen $N$} \\
     \midrule
     0.109 & 0.138 & 195 \\
     \bottomrule
@@ -30,7 +30,7 @@
     \label{tab:kugel}
     \begin{tabular}{c c c}
     \toprule
-    {Radius der Kugel $r_K$ / m} & {Masse der Kugel $m_K$ / kg} & {Länge des schwarzen Stiels an der Kugel  $r_\text{Stiel}$ / m}\\
+    {Radius der Kugel $r_K$ / m} & {Masse der Kugel $m_K$ / kg} & {Länge des Stiels der Kugel  $r_\text{Stiel}$ / m}\\
     \midrule
     0.02615 & 0.14197 & 0.01225 \\
     \bottomrule
@@ -55,13 +55,41 @@
   Dieser Abstand $r$ wird gegen die magnetische Flussdichte $B$ aufgetragen und anschließend eine lineare Regression der Form 
   \begin{equation}
   \label{eqn:Gerade}
-    y = a \cdot x + b,
+    y = a \cdot x + b
   \end{equation}
-  wobei die Steigung a hier durch $a = \frac{B}{r}$ gegeben ist. Die aufgetragenen Werte und die zugehörige Ausgleichsgerade
-  sind in \autoref{fig:gravigraph} zu sehen.
-  Die Steigung der Geraden beträgt
+  durchgeführt. $y$ beschreibt in diesem Fall die magnetischen Flussdichten $B$
+  und $x$ die Abstände $r$, sodass die Steigung a hier durch $a = \frac{B}{r}$ gegeben ist.
+  Die Konstanten $a$ und $b$ errechnen sich über 
+  \begin{equation}
+    \label{eqn:a}
+    a = \frac {\sum_{i=1}^N (x_i - \overline{x}) (y_i - \overline{y})}{\sum_{i=1}^N (x_i - \overline{x})^2}
+  \end{equation}
+  und
+  \begin{equation}
+  \label{eqn:b}
+  b = \overline{y} - a \cdot \overline{x},
+  \end{equation}
+  wobei die $x_i$ beziehungsweise $y_i$ die einzelnen aufgetragenen Werte darstellen und $\overline{x}$ beziehungsweise $\overline{y}$
+  die Mittelwerte dieser nach
+  \begin{equation}
+  \label{eqn:mittelwert}
+  \overline{x} = \frac {1} {N} \sum_{i=1}^N x_i
+  \end{equation}
+  mit dem Fehler 
+  \begin{equation}
+  \label{eqn:FehlerMittelwert}
+  \Delta \overline{x} = \frac{1}{\sqrt{N \cdot (N-1)}} \sqrt{ \sum_{i=1}^N (x_i - \overline{x})^2}.
+  \end{equation}
+  Der Fehler von $a$ berechnet sich außerdem jeweils nach Gaußscher Fehlerfortpflanzung zu
+  \begin{equation}
+  \label{eqn:fehlera}
+  \Delta a = \sqrt{\frac{N}{N \sum_{i = 1}^{N} x_i^{2} - (\sum_i^{N} x_i)^2} \cdot \Bigl (\frac {1}{N-2} \sum_{i = 1}^{N}(y_i -b - m x_i )^2 \Bigr) }.
+  \end{equation}
+  Die Anzahl der verwendeten Messwerte ist in allen Versuchsteilen $N = 10$.
+  Die aufgetragenen Werte und die zugehörige Ausgleichsgerade sind in \autoref{fig:gravigraph} zu sehen.
+  Die Steigung der Geraden beträgt nach Gleichung \eqref{eqn:a} und \eqref{eqn:fehlera}
   \\ \\
-  \centerline{$a = (31.258 \pm 1.324) \symup{\frac{T}{m}}$}.
+  \centerline{$a = (31.258 \pm 1.324) \symup{\frac{T}{m}}$.}
   \\ \\ 
   Mittels Gleichung \eqref{eqn:magn-grav} lässt sich das magnetische Dipolmoment dann zu
   \\ \\ 
@@ -69,14 +97,14 @@
   \\ \\
   bestimmen, wobei sich der Fehler durch Gaußsche Fehlerfortpflanzung errechnet zu 
   \\ \\
-  \centerline{$\Delta \mu_\text{Dipol} = \sqrt{m^2 \cdot g^2 \cdot \Delta a^2}$}.
+  \centerline{$\Delta \mu_\text{Dipol} = m \cdot g \cdot \Delta a$.}
   \\ \\
 
 \input{../content/gravi2.tex}
 \begin{figure}
   \centering
   \includegraphics{gravitation.pdf}
-  \caption{Auftragung des Abstandes $r$ zwischen Kugelzentrum und augesteckter Masse und magnetischer Flussdichte $B$ mit Ausgleichgerade.}
+  \caption{Auftragung des Abstandes $r$ zwischen Kugelzentrum und augesteckter Masse gegen die magnetische Flussdichte $B$, mit Ausgleichgerade.}
   \label{fig:gravigraph}
 \end{figure}
 
@@ -85,32 +113,33 @@
     \input{../content/schwing.tex}
    
     Die quadratischen Periodendauern $T^2$ werden gegen $\frac{1}{B}$ aufgetragen und anschließend mittels linearer Regression eine
-    Ausgleichsgerade bestimmt. 
+    Ausgleichsgerade, wie in Gleichung \eqref{eqn:Gerade}, bestimmt, wobei $y$ in diesem Fall die Kehrwerte der 
+    magnetischen Flussdichten $\frac{1}{B}$ darstellt und $x$ die quadratischen Periodendauern $T^2$.
     Die verwendeten Werte sind in \autoref{tab:schwing2} zu sehen; die magnetischen Flussdichten werden wieder mittels Gleichung
     \eqref{eqn:helmholtz} und mithilfe der Werte aus \autoref{tab:spule} bestimmt.
     Die aufgetragenen Werte, sowie die zugehörige Ausgleichgerade finden sich in \autoref{fig:schwingung}.
-    Die Steigung der Ausgleichsgerade ist dabei 
+    Die Steigung der Ausgleichsgerade ist dabei nach Gleichung \eqref{eqn:a} und \eqref{eqn:fehlera}
     \\ \\
-    \centerline{$a = T^2 B = (266.07 \pm 1.46) \symup{T s^2} $}.
+    \centerline{$a = T^2 B = (266.07 \pm 1.46) \symup{T s^2} $.}
     \\ \\
     Mittels Gleichung \eqref{eqn:magn-schwing} lässt sich damit das magnetische Moment errechnen zu
     \\ \\
-    \centerline{$\mu_\text{Dipol} = (0.4079 \pm 0.0022) \symup{A m^2}$},
+    \centerline{$\mu_\text{Dipol} = (0.4079 \pm 0.0022) \symup{A m^2}$,}
     \\ \\
     wobei sich der zugehörige Fehler über 
     \\ \\
-    \centerline{$\Delta \mu_\text{Dipol} = \sqrt{\frac{(16 \pi^2 \cdot J_K)^2}{a^2} \Delta a^2 }  $}.
+    \centerline{$\Delta \mu_\text{Dipol} = \frac{4 \pi^2 \cdot J_K}{a} \Delta a   $.}
     \\ \\
     Das Trägheitsmoment der Kugel $J_K$ ist bereits zuvor bestimmt worden.
     \input{../content/schwing2.tex}
     \begin{figure}
         \centering
         \includegraphics{schwingung.pdf}
-        \caption{Auftragung der quadratischen Periodendauer $T^2$ und dem Kehrwert der magnetischen Flussdichte $\frac{1}{B}$ mit Ausgleichgerade.}
+        \caption{Auftragung der quadratischen Periodendauer $T^2$ gegen den Kehrwert der magnetischen Flussdichte $\frac{1}{B}$, mit Ausgleichgerade.}
         \label{fig:schwingung}
     \end{figure}
 
-    \subsection{Bestimmun des magnetischen Momentes über die Präzession eines Magneten}
+    \subsection{Bestimmung des magnetischen Momentes über die Präzession eines Magneten}
         Die zur Bestimmung des magnetischen Momentes gemessenen Stromstärken und die dazugehörigen Umlaufzeiten sind in \autoref{tab:praezess}
         dargestellt. Bei der Messung wird eine Rotationsfrequenz von $f = 4.9 \symup{Hz}$  verwendet, womit sich der Drehimpuls nach
         Gleichung \eqref{eqn:drehimpuls} zu 
@@ -122,11 +151,12 @@
         Die Kehrwerte der Periodendauern $\frac{1}{T}$ werden gegen die magnetischen Flussdichten $B$ aufgetragen.
         Die magnetischen Flussdichten $B$ werden wieder durch Gleichung \eqref{eqn:helmholtz} und den Werten aus \autoref{tab:spule}
         bestimmt. Die bei der Auftragung verwendeten Werte sind in \autoref{tab:praezess2} zu sehen. Über die gegeneinander 
-        aufgetragenen Werte wird eine lineare Regression zur Bestimmung einer Ausgleichsgerade durchgeführt. Die aufgetragenen Werte,
-        sowie die Ausgleichsgerade sind in \autoref{fig:praezess} dargestellt.
-        Die Steigung der Geraden ist 
+        aufgetragenen Werte wird eine lineare Regression, zur Bestimmung einer Ausgleichsgerade derselben Form wie Gleichung \eqref{eqn:Gerade} durchgeführt,
+        wobei $y$ hier die magnetischen Flussdichten $B$ und $x$ die Kehrwerte der Periodendauern $\frac{1}{T}$  darstellt.
+        Die aufgetragenen Werte, sowie die Ausgleichsgerade sind in \autoref{fig:praezess} dargestellt.
+        Die Steigung der Geraden ist nach Gleichung \eqref{eqn:a} und \eqref{eqn:fehlera}
         \\ \\
-        \centerline{$a = T \cdot B = 0.0170 \pm 0.0009 \symup{T s}$}.
+        \centerline{$a = T \cdot B = 0.0170 \pm 0.0009 \symup{T s}$.}
         \\ \\
         Zusammen mit den bestimmten Drehimpuls $L_K$ lässt sich das magnetische Moment durch Gleichung \eqref{eqn:magn-praez} zu
         \\ \\
@@ -135,12 +165,12 @@
         bestimmen.
         Der Fehler des magnetischen Moments errechnet sich dabei zu 
         \\ \\ 
-        \centerline{$\Delta\mu_\text{Dipol} = \sqrt{\frac{4 \pi^2 L^2}{a^2} \Delta a^2} $}.
+        \centerline{$\Delta\mu_\text{Dipol} = \frac{2 \pi L}{a} \Delta a $.}
         \\ \\
         \input{../content/praezess2.tex}
           \begin{figure}
         \centering
         \includegraphics{praezess.pdf}
-        \caption{Auftragung des Kehrwertes der Periodendauer $\frac{1}{T}$ gegen die magnetische Flussdichte $B$ mit Ausgleichgerade.}
+        \caption{Auftragung des Kehrwertes der Periodendauer $\frac{1}{T}$ gegen die magnetische Flussdichte $B$, mit Ausgleichgerade.}
         \label{fig:praezess}
     \end{figure}
